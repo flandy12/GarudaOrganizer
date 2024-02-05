@@ -25,10 +25,10 @@ const MicePage = () => {
                 setBanner(ressponse.results === null ? ressponse.results : ressponse.results.banner);
                 setWording(ressponse.results === null ? ressponse.results : ressponse.results.wording);
                 setBannerDescription(ressponse.results === null ? ressponse.results : ressponse.results.banner_description);
-                console.log(ressponse);
+              
             } else {
                 alert('error');
-                console.log(ressponse);
+              
             }
         })
     },[])

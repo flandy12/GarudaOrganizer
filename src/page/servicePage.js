@@ -15,7 +15,6 @@ const ServicesPage = () => {
             setProject(ressponse.results.project)
         } else {
             alert('Error Page');
-            console.log(ressponse);
         }
       })
 

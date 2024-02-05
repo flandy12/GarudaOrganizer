@@ -77,6 +77,7 @@ const HomePage = () => {
         
         CallApi('home', 'GET')
         .then(ressponse => {
+            console.log(ressponse);
             scrollToTop();
            if(ressponse.success === true) {
                 setLoading(false);
@@ -88,14 +89,13 @@ const HomePage = () => {
                 setService(ressponse.results.service);
                 setTestimonial(ressponse.results.testimonial);
                 setWhyChooseUs(ressponse.results.why_choose_us);
-                console.log(ressponse);
                
            } else {
             alert('Error Page');
-
            }
+           console.log(ressponse);
         })
-
+        
     }, []);
 
     const Testimoni = (props) => {
@@ -281,13 +281,13 @@ customers are saying about us.</h2>
         
             <>  
                 <SEO 
-                title={'Garuda Organizer'}
-                meta_description={''}
-                meta_keywords={''}
+                title={'Garuda Organizer - Perusahaan Profesional Di Bidang Jasa Event Organizer (EO) Jakarta'}
+                meta_description={'Garuda Organizer adalah perusahaan profesional di bidang Jasa Event Organizer (EO) dan Penyelenggara Acara di Jakarta dengan konsep unik dan dokumentasi lengkap'}
+                meta_keywords={'eo jakarta, eo indonesia, event organizer, event online, event management'}
                 author={'Garuda Organizer'}
                 url={window.location.href}
-                og_image={`/public/favicon.ico`}
                 />
+                
                {loading === true ? <Loading/> : (
                     <div className={`mx-auto`}>
 

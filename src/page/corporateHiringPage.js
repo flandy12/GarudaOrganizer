@@ -22,10 +22,10 @@ const CorporateHiringPage = () => {
                 setBanner(ressponse.results.banner);
                 setWording(ressponse.results.wording);
                 setBannerDescription(ressponse.results.banner_description);
-                console.log(ressponse);
+               
             } else {
                 alert('error');
-                console.log(ressponse);
+             
             }
         })
     },[])

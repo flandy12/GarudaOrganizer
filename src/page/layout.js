@@ -8,17 +8,18 @@ const Layout = ({children}) => {
     
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    CallApi('contact-us-information', 'GET', {
-      headers: {
-        'Accept': 'application/json',
-        'Authorization' : `Bearer ${process.env.REACT_APP_URL_API_KEY}`
-      },
-    }).then(ress => {
-      setData(ress.results);
-      console.log(ress.results);
-    })
-  }, [])
+  // useEffect(() => {
+  //   CallApi('contact-us-information', 'GET', {
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Authorization' : `Bearer ${process.env.REACT_APP_URL_API_KEY}`
+  //     },
+  //   }).then(ress => {
+     
+  //       setData(ress.results);
+ 
+  //   })
+  // }, [])
     return (
         <>
         <Navbar/>
