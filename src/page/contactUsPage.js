@@ -17,10 +17,8 @@ const ContactUs = () => {
        if(ressponse.success === true) {
             setLoading(false);
             setContactUsInformation(ressponse.results)
-            console.log(ressponse);
        } else {
         alert('Error Page');
-        console.log(ressponse);
        }
     })
 }, [])
