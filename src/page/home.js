@@ -77,7 +77,7 @@ const HomePage = () => {
         
         CallApi('home', 'GET')
         .then(ressponse => {
-            console.log(ressponse);
+
             scrollToTop();
            if(ressponse.success === true) {
                 setLoading(false);
@@ -93,7 +93,7 @@ const HomePage = () => {
            } else {
             alert('Error Page');
            }
-           console.log(ressponse);
+
         })
         
     }, []);
