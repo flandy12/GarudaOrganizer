@@ -297,87 +297,7 @@ customers are saying about us.</h2>
                         </div>
                     </div>
 
-                    <div className=''>
-                        <div className="container mx-auto text-center xl:space-y-5 lg:space-y-5 space-y-5 rounded px-5 xl:py-14 lg:py-14 p-7 bg-sky-50">
-                            <div className='flex justify-center'>
-                                <div className="justify-center text-blue-600 text-sm font-bold leading-6 tracking-wide uppercase whitespace-nowrap items-stretch bg-sky-100 px-4 py-3 rounded-lg self-start max-w-[160px] animations-element" data-animation="fade-in-fwd">
-                                Our Profile
-                                </div>
-                            </div>
-        
-                            <h2 className="xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[39px] leading-[39px] tracking-normal portofolio-headline animations-element capitalize text-slate-700 lg:mt-30" data-animation="slide-top">
-                                What Do We Do?
-                            </h2>
-                        
-                            <div className="w-full">
-                                <div className="flex flex-wrap xl:grid lg:grid md:grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 xl:gap-5 lg:gap-5 gap-8 items-center place-content-center text-center xl:py-10 lg:py-10 py-10 xl:px-5 lg:px-5 md:px-5 px-3">
-
-                                    {sector.map((value,key) => (
-                                            <div className={`mx-auto text-center bg-white text-black shadow rounded-xl xl:px-5 lg:px-5 md:px-5 px-10  animations-element border icon-services py-10`} data-animation="fade-in-fwd" key={key}>
-                                             <picture>
-                                                <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.image}`} type="image/webp"/>
-                                                <img className="w-14 mx-auto" src={`${process.env.REACT_APP_URL_IMG}${value.image}`} alt="Exhibition & Expo" loading="lazy" />
-                                            </picture> 
-                                          
-                                            <div className='space-y-3'> 
-                                                <p className="font-bold xl:text-xl lg:text-xl md:text-base text-lg mt-5 text-slate-700">{value.name}</p>
-                                                <p className="mt-5 line-clamp-3">{value.description}</p>
-                                            
-                                            </div>
-                                        </div>
-                                    ))}
-                                
-                            
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div className="bg-mobile-blue py-20 xl:mb-20 lg:mb-20 mb-0">
-                        <div className="container mx-auto px-5">
-                                
-                                 <div className="w-full xl:mt-40 lg:mt-40 mt--0 max-md:max-w-full">
-                                    <div className="gap-5 flex space-y-5 xl:flex-row lg:flex-row flex-col max-md:flex-col max-md:items-stretch max-md:gap-0">
-                                        <div className="flex flex-col items-stretch xl:w-[51%] lg:w-[51%] w-full max-md:w-full max-md:ml-0 animations-element opacity-0" data-animation="fade-in-fwd">
-                                            <div className="flex flex-col self-stretch items-stretch my-auto px-5 max-md:max-w-full max-md:mt-10">
-                                                <div className="justify-center text-blue-600 text-sm font-bold leading-6 tracking-wide uppercase whitespace-nowrap items-stretch bg-sky-100 px-4 py-3 rounded-lg self-start">
-                                                    Why Choose Us?
-                                                </div>
-                                                <div className="justify-center text-slate-700 xl:text-5xl lg:text-4xl text-3xl font-bold leading-[39px] tracking-normal mt-9 max-md:max-w-full">
-                                                    We bring solutions to
-                                                    <br />
-                                                    manage your event
-                                                    <br />
-                                                    way works best.
-                                                </div>
-                                                <div className="grid grid-cols-2 grid-rows-2 items-stretch justify-between gap-5 mt-11 max-md:max-w-full max-md:flex-wrap max-md:mt-10">
-                                                  {why_choose_us.map((value,key) => (
-                                                      <div className="flex-col items-stretch" key={key}>
-                                                      <div className="justify-center text-slate-700 xl:text-xl lg:text-lg  text-md font-bold leading-7 tracking-normal">
-                                                          {key + 1}<span className="text-slate-700"> {value.description}</span>
-                                                      </div>
-                                                      </div>
-                                                    ))}
-                                                   
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col items-stretch xl:w-[49%] lg:w-[49%] w-full xl:ml-5 lg:ml-5 ml-0 max-md:w-full max-md:ml-0 " >
-                                            <div className="bg-blue-600 flex grow justify-center w-full xl:px-12 lg:px-12 md:px-5 px-0 xl:py-12 lg:py-12 md:py-5 py-5 xl:mt-10 lg:mt-10 md:mt-5 mt-0 items-center max-md:max-w-full max-md:mt-10 max-md:px-5 rounded-xl">
-                                                <div className=" flex relative justify-center mt-2.5 items-start animations-element" data-animation="fade-in-fwd">
-
-                                                    <CarouselAbout data={why_choose_us}/>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                
-                    <div className="container mx-auto text-center xl:space-y-5 lg:space-y-5 space-y-2 rounded px-5 xl:mb-20 lg:mb-20">
+                    <div className="container mx-auto text-center xl:space-y-5 lg:space-y-5 space-y-5 rounded px-5 xl:py-14 lg:py-14 p-7 bg-sky-50">
                         <div className='flex justify-center text-center mb-10'>
                             <div className="justify-center text-blue-600 text-sm font-bold leading-6 tracking-wide uppercase whitespace-nowrap items-stretch bg-sky-100 px-4 py-3 rounded-lg self-start max-w-[auto] text-center animations-element" data-animation="fade-in-fwd">
                                 Our Services
@@ -415,6 +335,50 @@ customers are saying about us.</h2>
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                    </div>
+        
+                    <div className="bg-mobile-blue py-20 xl:mb-20 lg:mb-20 mb-0">
+                        <div className="container mx-auto px-5">
+                                
+                                 <div className="w-full mt--0 max-md:max-w-full">
+                                    <div className="gap-5 flex space-y-5 xl:flex-row lg:flex-row flex-col max-md:flex-col max-md:items-stretch max-md:gap-0">
+                                        <div className="flex flex-col items-stretch xl:w-[51%] lg:w-[51%] w-full max-md:w-full max-md:ml-0 animations-element opacity-0" data-animation="fade-in-fwd">
+                                            <div className="flex flex-col self-stretch items-stretch my-auto px-5 max-md:max-w-full max-md:mt-10">
+                                                <div className="justify-center text-blue-600 text-sm font-bold leading-6 tracking-wide uppercase whitespace-nowrap items-stretch bg-sky-100 px-4 py-3 rounded-lg self-start">
+                                                    Why Choose Us?
+                                                </div>
+                                                <div className="justify-center text-slate-700 xl:text-5xl lg:text-4xl text-3xl font-bold leading-[39px] tracking-normal mt-9 max-md:max-w-full">
+                                                    We bring solutions to
+                                                    <br />
+                                                    manage your event
+                                                    <br />
+                                                    way works best.
+                                                </div>
+                                                <div className="grid grid-cols-2 grid-rows-2 items-stretch justify-between gap-5 mt-11 max-md:max-w-full max-md:flex-wrap max-md:mt-10">
+                                                  {why_choose_us.map((value,key) => (
+                                                      <div className="flex-col items-stretch" key={key}>
+                                                      <div className="justify-center text-slate-700 xl:text-xl lg:text-lg  text-md font-bold leading-7 tracking-normal">
+                                                          {key + 1}<span className="text-slate-700"> {value.description}</span>
+                                                      </div>
+                                                      </div>
+                                                    ))}
+                                                   
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col items-stretch xl:w-[49%] lg:w-[49%] w-full xl:ml-5 lg:ml-5 ml-0 max-md:w-full max-md:ml-0 " >
+                                            <div className="bg-blue-600 flex grow justify-center w-full xl:px-12 lg:px-12 md:px-5 px-0 xl:py-12 lg:py-12 md:py-5 py-5 xl:mt-10 lg:mt-10 md:mt-5 mt-0 items-center max-md:max-w-full max-md:mt-10 max-md:px-5 rounded-xl">
+                                                <div className=" flex relative justify-center mt-2.5 items-start animations-element" data-animation="fade-in-fwd">
+
+                                                    <CarouselAbout data={why_choose_us}/>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 
