@@ -25,8 +25,8 @@ function App() {
         <Layout>
           <SEO 
               title={'Garuda Organizer - Perusahaan Profesional Di Bidang Jasa Event Organizer (EO) Jakarta'}
-              meta_description={'Garuda Organizer adalah perusahaan profesional di bidang Jasa Event Organizer (EO) dan Penyelenggara Acara di Jakarta dengan konsep unik dan dokumentasi lengkap'}
-              meta_keywords={'eo jakarta, eo indonesia, event organizer, event online, event management'}
+              meta_description={'Garuda Organizer - Jelajahi Kreativitas dan Kelengkapan Dokumentasi Acara bersama Garuda Organizer, Jasa Event Organizer Profesional di Jakarta dengan Konsep Unik!'}
+              meta_keywords={'eo jakarta, eo indonesia, event organizer, event online, event management, bazzar, mice, event, event tebaik, jakarta'}
               author={'Garuda Organizer'}
               url={window.location.href}
             />
