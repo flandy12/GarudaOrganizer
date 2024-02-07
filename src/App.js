@@ -15,6 +15,7 @@ import DigitalPage from './page/digitalPage';
 import CorporateHiringPage from './page/corporateHiringPage';
 import AboutPage from './page/aboutPage';
 import Layout from './page/layout';
+import SEO from './compoments/seo';
 
 function App() {
 
@@ -22,7 +23,13 @@ function App() {
   return (
      <HelmetProvider>
         <Layout>
-        
+          <SEO 
+              title={'Garuda Organizer - Perusahaan Profesional Di Bidang Jasa Event Organizer (EO) Jakarta'}
+              meta_description={'Garuda Organizer adalah perusahaan profesional di bidang Jasa Event Organizer (EO) dan Penyelenggara Acara di Jakarta dengan konsep unik dan dokumentasi lengkap'}
+              meta_keywords={'eo jakarta, eo indonesia, event organizer, event online, event management'}
+              author={'Garuda Organizer'}
+              url={window.location.href}
+            />
             <Routes>
               <Route path="/" element={ <HomePage/> } />
               <Route path="/about" element={ <AboutPage/> } />
