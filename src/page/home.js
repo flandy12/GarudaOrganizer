@@ -117,7 +117,7 @@ const HomePage = () => {
                         </div>
                     </div>
                   
-                    <h2 className="text-slate-700 xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[39px] leading-[39px] tracking-normal xl:px-30 lg:px-30 px-4">Don't take our word for it. Szee what
+                    <h2 className="text-slate-700 xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[39px] leading-[39px] tracking-normal xl:px-30 lg:px-30 px-4">Don't take our word for it. See what
 customers are saying about us.</h2>
                     <p className="px-5 xl:px-32 lg:px-32 xl:mx-10 lg:mx-0 mx-0 xl:pb-0 lg:pb-0 pb-5 text-lg" >
                     We have held various events with various themes, both for private and government agencies. Our success creates unforgettable experiences.
