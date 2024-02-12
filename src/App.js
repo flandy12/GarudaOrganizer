@@ -39,8 +39,7 @@ function App() {
               <Route path="/mice" element={ <MicePage/> } />
               <Route path='/recruitment' element={ <RecruitmentPage/> } />
               <Route path='/digital-services' element={ <DigitalPage/> } />
-              <Route path='/coporate-hiring' element={ <CorporateHiringPage/> } />
-         
+              <Route path='/corporate-hiring' element={ <CorporateHiringPage/> } />
             </Routes>
            
 

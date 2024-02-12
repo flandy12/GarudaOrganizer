@@ -13,7 +13,7 @@ const Navbar = () => {
         'link' : 'recruitment'
       }, {
         'name' : 'Corporate Hiring Program',
-        'link' : 'coporate-hiring'
+        'link' : 'corporate-hiring'
       }, {
         'name' : 'MICE',
         'link' : 'mice'
