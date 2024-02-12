@@ -5,6 +5,7 @@ import SkeletonPortofolio from "../compoments/skeleton";
 import { Link } from "react-router-dom";
 import { Loading } from "../compoments/loading";
 import SEO from "../compoments/seo";
+import createMarkup from "../compoments/htmlTag";
 
 
 const PortofolioPage = () => {
@@ -26,7 +27,7 @@ const PortofolioPage = () => {
             setTitle(ressponse.title);
             setWording(ressponse.wording);
             setProject(ressponse.results.results);  
-
+            console.log(ressponse);
         } else {
             alert('Error Page');
          
@@ -114,8 +115,13 @@ const PortofolioPage = () => {
                         </picture>
 
                         <div className={`my-4 space-y-4 text-white absolute bottom-10 left-5 right-5 z-0 ${elementPortofolio === `element-text-${key+1}` ? '' : 'hidden'}`} id={`element-text-${key+1}`}>
-                            <h1 className="font-semibold text-lg">{value.title}</h1>
-                            <p className="text-white">{value.description}</p>
+                            <div className="font-semibold text-lg">
+                                <div dangerouslySetInnerHTML={createMarkup(value.title)} />  
+                            </div>
+                           
+                            <div className="text-white">
+                                 <div dangerouslySetInnerHTML={createMarkup(value.description)} />  
+                            </div>
                         </div>
                       
                     </div> 

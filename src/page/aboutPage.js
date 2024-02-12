@@ -32,7 +32,7 @@ const AboutPage = () => {
                 // setSector(ressponse.results.sector);
                 // setService(ressponse.results.service);
                 // setTestimonial(ressponse.results.testimonial);
-              
+         
            } else {
             alert('Error Page');
             

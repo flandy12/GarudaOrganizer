@@ -22,10 +22,10 @@ const Layout = ({children}) => {
   }, [])
     return (
         <>
-        <Navbar/>
-        <Whatsapp data={data.whatsapp_number}/>
+          <Navbar/>
+          <Whatsapp data={data.whatsapp_number}/>
             {children}
-        <Footer data={data.to_email}/>
+          <Footer data={data.to_email}/>
         </>
     )
 }

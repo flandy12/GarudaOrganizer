@@ -249,11 +249,10 @@ customers are saying about us.</h2>
                   <div className={`carousel-item  px-5  ${counts === key ? 'flex xl:grid lg:grid md:grid  xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 flex-col-reverse gap-9 items-center slide-headline ' : 'hidden'  }`} key={key}>
                       <div className="xl:space-y-5 lg:space-y-5 space-y-2 relative " >
 
-                          <h1 className={`xl:text-5xl lg:text-3xl text-3xl  xl:leading-[53px] lg:leading-[39px] leading-[39px] font-bold text-left text-headline-benner bounce-top pe-10 text-slate-700`}>
-                              
-                          {value.title}
-
-                          </h1>
+                          <div className={`xl:text-5xl lg:text-3xl text-3xl  xl:leading-[53px] lg:leading-[39px] leading-[39px] font-bold text-left text-headline-benner bounce-top pe-10 text-slate-700`}>
+                         
+                          {<div dangerouslySetInnerHTML={createMarkup(value.title)} /> }
+                          </div>
                         
                           
                           <div className={`mr-10 text-description-benner slide-right xl:pr-14 lg:pr-14 md:pr-4`} data-animation='slide-right'>
@@ -327,11 +326,16 @@ customers are saying about us.</h2>
                                         </picture> 
 
                                         <div className='space-y-3'> 
-                                            <p className="font-bold xl:text-xl lg:text-lg md:text-lg text-lg mt-5 ">{value.name}</p>
-                                            <p className="mt-5 line-clamp-3">{value.description}</p>
+                                        
+                                            <div className="font-bold xl:text-xl lg:text-lg md:text-lg text-lg mt-5 ">
+                                                <div dangerouslySetInnerHTML={createMarkup(value.name)} />
+                                            </div>
+                                            <div className="mt-5 line-clamp-3">
+                                                <div dangerouslySetInnerHTML={createMarkup(value.description)} />
+                                            </div>
                                         
                                             <div className='mx-auto text-center w-full'>
-                                            <Link to={`${value.link}`} aria-label={`link to show ${value.lin}`}><p className='w-max  border-blue-500 font-semibold text-blue-500 text-center mx-auto'>Learn More </p> </Link>
+                                            <Link to={`${value.link}`} aria-label={`link to show ${value.link}`}><p className='w-max  border-blue-500 font-semibold text-blue-500 text-center mx-auto'>Learn More </p> </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -361,7 +365,7 @@ customers are saying about us.</h2>
                                                   {why_choose_us.map((value,key) => (
                                                       <div className="flex-col items-stretch" key={key}>
                                                       <div className="justify-center text-slate-700 xl:text-xl lg:text-lg  text-md font-bold leading-7 tracking-normal">
-                                                          {key + 1}<span className="text-slate-700"> {value.description}</span>
+                                                          {key + 1}<span className="text-slate-700"><div dangerouslySetInnerHTML={createMarkup(value.description)} /></span>
                                                       </div>
                                                       </div>
                                                     ))}
@@ -445,7 +449,10 @@ customers are saying about us.</h2>
                                         <div className={'animations-element xl:px-20 lg:px-14 px-14'} data-count="true" data-animation="slide-top-count">
                                             <CountUp end={ count === true ? value.number : 0 } className="number-achievement text-blue-600 " />
                                         </div>
-                                        <h1 className="uppercase xl:text-xl lg:text-lg text-lg font-bold tracking-tight text-slate-700">{value.name}</h1>
+                                        
+                                        <div className="uppercase xl:text-xl lg:text-lg text-lg font-bold tracking-tight text-slate-700">
+                                            <div dangerouslySetInnerHTML={createMarkup(value.name)} />  
+                                        </div>
                                     </div>
                                 ))}
 

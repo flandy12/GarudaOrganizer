@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import createMarkup from "./htmlTag"
 
 const Portfolio = (props) => {
     
@@ -38,7 +39,9 @@ const Portfolio = (props) => {
                     <Link tp="#">
                         <h5 className="mb-2 xl:text-xl lg:text-xl text-lg font-bold tracking-tight text-slate-700">{`${props.data_name}`}</h5>
                     </Link>
-                    <p className="mb-3 font-normal text-gray-800">{`${props.data_description}`}</p>
+                    <div className="mb-3 font-normal text-gray-800">
+                        <div dangerouslySetInnerHTML={createMarkup(props.data_description)} />  
+                    </div>
                 </div>
 
     
