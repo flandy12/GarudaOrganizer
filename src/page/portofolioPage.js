@@ -28,7 +28,7 @@ const PortofolioPage = () => {
             setTitle(ressponse.title);
             setWording(ressponse.wording);
             setProject(ressponse.results.results);  
-            console.log(ressponse);
+         
         } else {
             alert('Error Page');
          

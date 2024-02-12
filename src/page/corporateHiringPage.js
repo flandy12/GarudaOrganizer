@@ -18,13 +18,11 @@ const CorporateHiringPage = () => {
         .then(ressponse => {
             scrollToTop();
             if(ressponse.success === true) {
-                console.log(ressponse);
                 setLoading(false);
                 setResults(ressponse.results);
                 setBanner(ressponse.results.banner);
                 setWording(ressponse.results.wording);
                 setBannerDescription(ressponse.results.banner_description);
-                console.log(ressponse);
             } else {
                 alert('error');
              
