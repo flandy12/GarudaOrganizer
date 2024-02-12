@@ -15,7 +15,7 @@ const Layout = ({children}) => {
         'Authorization' : `Bearer ${process.env.REACT_APP_URL_API_KEY}`
       },
     }).then(ress => {
-     
+        
         setData(ress.results);
  
     })

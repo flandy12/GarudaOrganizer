@@ -18,7 +18,7 @@ import SEO from '../compoments/seo';
 import SkeletonPortofolio from '../compoments/skeleton';
 import { Loading } from '../compoments/loading';
 import { Link } from 'react-router-dom';
-import createMarkup from '../compoments/htmlTag';
+import {createMarkup, scrollToTop} from '../compoments/htmlTag';
 
 const HomePage = () => {
     const [count, setCount] = useState(false);
@@ -60,14 +60,6 @@ const HomePage = () => {
         }
     };
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-          });
-    }
-
     const arrays = ['a','b','c','d'];
 
     useEffect(() => {    
@@ -78,8 +70,7 @@ const HomePage = () => {
         
         CallApi('home', 'GET')
         .then(ressponse => {
-
-            scrollToTop();
+           scrollToTop();
            if(ressponse.success === true) {
                 setLoading(false);
                 setBanner(ressponse.results.banner);
@@ -90,7 +81,6 @@ const HomePage = () => {
                 setService(ressponse.results.service);
                 setTestimonial(ressponse.results.testimonial);
                 setWhyChooseUs(ressponse.results.why_choose_us);
-               
            } else {
             alert('Error Page');
            }

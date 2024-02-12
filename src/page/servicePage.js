@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import Portfolio from "../compoments/portofolio";
 import CallApi from "../api/Api";
 import SkeletonPortofolio from "../compoments/skeleton";
+import { scrollToTop } from "../compoments/htmlTag";
 
 
 const ServicesPage = () => {
@@ -10,6 +11,7 @@ const ServicesPage = () => {
     useEffect(() => {
       CallApi('service', 'GET')
       .then( ressponse => {
+        scrollToTop();
         if(ressponse.status === true) {
             setLoading(false);
             setProject(ressponse.results.project)

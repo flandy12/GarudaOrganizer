@@ -5,7 +5,7 @@ import SkeletonPortofolio from "../compoments/skeleton";
 import { Link } from "react-router-dom";
 import { Loading } from "../compoments/loading";
 import SEO from "../compoments/seo";
-import createMarkup from "../compoments/htmlTag";
+import {createMarkup, scrollToTop } from "../compoments/htmlTag";
 
 
 const PortofolioPage = () => {
@@ -21,6 +21,7 @@ const PortofolioPage = () => {
     useEffect(() => {
       CallApi('project', 'GET')
       .then( ressponse => {
+        scrollToTop();
         if(ressponse.success === true) {
             // setProject(ressponse.results.project);
             setLoading(false);

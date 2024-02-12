@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import createMarkup from "./htmlTag"
+import {createMarkup} from "./htmlTag"
 
 const Portfolio = (props) => {
     

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CallApi from "../api/Api";
-import createMarkup from "../compoments/htmlTag";
+import { scrollToTop, createMarkup } from "../compoments/htmlTag";
 import { Loading } from "../compoments/loading";
 import SEO from "../compoments/seo";
 
@@ -16,6 +16,7 @@ const RecruitmentPage = () => {
     useEffect(() => {
         CallApi(`service?url=${params.replace('/','')}`, 'GET')
         .then(ressponse => {
+            scrollToTop();
             if(ressponse.success === true) {
                 setLoading(false);
                 setResults(ressponse.results);

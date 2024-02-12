@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CallApi from "../api/Api";
 import { Link } from "react-router-dom";
 import { Loading } from "../compoments/loading";
-import createMarkup from "../compoments/htmlTag";
+import { scrollToTop, createMarkup } from "../compoments/htmlTag";
 import SEO from "../compoments/seo";
 
 const AboutPage = () => {
@@ -20,6 +20,8 @@ const AboutPage = () => {
     useEffect(() => {
         CallApi('about-us', 'GET')
         .then(ressponse => {
+            
+            scrollToTop();
            if(ressponse.success === true) {
                 setLoading(false);
                 setTitle(ressponse.title);

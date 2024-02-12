@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CallApi from "../api/Api";
 import { Loading } from "../compoments/loading";
 import SEO from "../compoments/seo";
-import createMarkup from "../compoments/htmlTag";
+import  { scrollToTop,createMarkup } from "../compoments/htmlTag";
 
 const CorporateHiringPage = () => {
     const params = window.location.pathname;
@@ -14,15 +14,17 @@ const CorporateHiringPage = () => {
     const [banner_description, setBannerDescription] = useState('');
 
     useEffect(() => {
-        CallApi(`service?url=${params.replace('/','')}`, 'GET')
+        CallApi(`service?url=coporate-hiring`, 'GET')
         .then(ressponse => {
+            scrollToTop();
             if(ressponse.success === true) {
+                console.log(ressponse);
                 setLoading(false);
                 setResults(ressponse.results);
                 setBanner(ressponse.results.banner);
                 setWording(ressponse.results.wording);
                 setBannerDescription(ressponse.results.banner_description);
-               
+                console.log(ressponse);
             } else {
                 alert('error');
              
