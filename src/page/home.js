@@ -18,6 +18,7 @@ import SEO from '../compoments/seo';
 import SkeletonPortofolio from '../compoments/skeleton';
 import { Loading } from '../compoments/loading';
 import { Link } from 'react-router-dom';
+import createMarkup from '../compoments/htmlTag';
 
 const HomePage = () => {
     const [count, setCount] = useState(false);
@@ -253,10 +254,11 @@ customers are saying about us.</h2>
                           {value.title}
 
                           </h1>
-
-                          <p className={`mr-10 text-description-benner slide-right xl:pr-14 lg:pr-14 md:pr-4`} data-animation='slide-right'>
-                          {value.description}
-                          </p>
+                        
+                          
+                          <div className={`mr-10 text-description-benner slide-right xl:pr-14 lg:pr-14 md:pr-4`} data-animation='slide-right'>
+                             {<div dangerouslySetInnerHTML={createMarkup(value.description)} /> }
+                          </div>
 
                       </div>
 
