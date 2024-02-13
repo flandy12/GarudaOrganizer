@@ -16,6 +16,7 @@ import CorporateHiringPage from './page/corporateHiringPage';
 import AboutPage from './page/aboutPage';
 import Layout from './page/layout';
 import SEO from './compoments/seo';
+import NotFound from './page/error/error_404';
 
 function App() {
 
@@ -40,7 +41,7 @@ function App() {
               <Route path='/recruitment' element={ <RecruitmentPage/> } />
               <Route path='/digital-services' element={ <DigitalPage/> } />
               <Route path='/corporate-hiring' element={ <CorporateHiringPage/> } />
-         
+              <Route path="*" element={<NotFound />} />
             </Routes>
            
 
