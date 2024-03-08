@@ -58,17 +58,6 @@ const PortofolioPage = () => {
             url={window.location.href}
             og_image={`/public/favicon.ico`}
             />
-        {/* <div className="relative h-72 rounded-xl mb-24">
-            <div className="bg-black relative  rounded-xl my-10">
-                <img src="https://images.unsplash.com/photo-1665686308827-eb62e4f6604d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YnVzaW5lc3N8ZW58MHx8MHx8fDA%3D=" alt="sacsa" loading="lazy" className="opacity-80 w-full object-cover h-96 aspect-video rounded-xl"/>
-           </div>
-           <div className="absolute top-0 bottom-0 left-0 right-0 my-0 mx-0 space-y-2 text-white text-center h-auto flex flex-col items-center justify-center">
-          
-            <h2 className="xl:text-4xl lg:text-4xl text-3xl xl:leading-[53px] lg:leading-[53px] leading-[39px] font-bold ">
-                Tingkatkan Acara Anda, Ubah Pengalaman Anda
-            </h2>
-           </div>
-        </div> */}
        
         {loading !== true ? (
             <div className="container mx-auto px-5">

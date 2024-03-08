@@ -30,7 +30,7 @@ const HomePage = () => {
     const [service, setService] = useState([]);
     const [testimonial, setTestimonial] = useState([]);
     const [why_choose_us, setWhyChooseUs] = useState([]);
-
+    const [why_choose_us_other_images, setWhyChooseUsOtherImages] = useState([]);
     const [loading, setLoading ] = useState(true);
   
     const handleScrollAnimation = () => { 
@@ -60,7 +60,13 @@ const HomePage = () => {
         }
     };
 
-    const arrays = ['a','b','c','d'];
+    const divStyle = {
+        backgroundImage: 'url("/images/asset/hex.png")',// Set your desired background color here
+        width: '100%',
+        height: '100%',
+        
+      };
+    
 
     useEffect(() => {    
         // Animation Scroll
@@ -81,6 +87,8 @@ const HomePage = () => {
                 setService(ressponse.results.service);
                 setTestimonial(ressponse.results.testimonial);
                 setWhyChooseUs(ressponse.results.why_choose_us);
+                setWhyChooseUsOtherImages(ressponse.results.why_choose_us_other_images);
+                console.log(ressponse);
            } else {
             alert('Error Page');
            }
@@ -108,9 +116,9 @@ const HomePage = () => {
                         </div>
                     </div>
                   
-                    <h2 className="text-slate-700 xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[39px] leading-[39px] tracking-normal xl:px-30 lg:px-30 px-4">Don't take our word for it. See what
+                    <h2 className="text-slate-700 xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[39px] leading-[39px] tracking-normal xl:px-30 lg:px-30 px-4 ">Don't take our word for it. See what
 customers are saying about us.</h2>
-                    <p className="px-5 xl:px-32 lg:px-32 xl:mx-10 lg:mx-0 mx-0 xl:pb-0 lg:pb-0 pb-5 text-lg" >
+                    <p className="px-5 xl:px-32 lg:px-32 xl:mx-10 lg:mx-0 mx-0 xl:pb-0 lg:pb-0 pb-5 text-lg italic" >
                     We have held various events with various themes, both for private and government agencies. Our success creates unforgettable experiences.
                     </p>
                     </div>
@@ -159,6 +167,17 @@ customers are saying about us.</h2>
         let [counts, setCountS] = useState(0);
         let carousel_item = document.querySelectorAll('.carousel-item-about');
 
+        const defaultItem = (value,key) => {
+            <div className="p-0 rounded-xl" key={key} >
+            <div className={`carousel-item-about rounded-xl ${counts === key ? '' : 'hidden'}`} id={`carousel-item-${key}`} >    
+                 <picture>
+                     <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.image}`} type="image/webp"/>
+                     <img src={`${process.env.REACT_APP_URL_IMG}${value.image}`} className={`block w-full h-full rounded-xl ${counts === key ? 'fade-in' : 'fade-out'}`}  alt="..." loading='lazy'/>
+                 </picture> 
+             </div>
+         </div>
+        }
+
         useEffect(() => {
             if(counts < carousel_item.length) {
                 let interval = setInterval(() => {  
@@ -188,12 +207,24 @@ customers are saying about us.</h2>
             <>
             {props.data.map((value,key) => (
                   
-                    <div className="p-0 rounded-xl" key={key} >
-                       <div className={`carousel-item-about rounded-xl ${counts === key ? '' : 'hidden'}`} id={`carousel-item-${key}`} >    
-                            <picture>
-                                <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.image}`} type="image/webp"/>
-                                <img src={`${process.env.REACT_APP_URL_IMG}${value.image}`} className={`block w-full h-full rounded-xl ${counts === key ? 'fade-in' : 'fade-out'}`}  alt="..." loading='lazy'/>
-                            </picture> 
+                  <div className={`mx-auto text-center bg-white text-black shadow rounded-xl xl:px-5 lg:px-5 md:px-5 px-10 animations-element border icon-services py-10 cursor-pointer`} data-animation="fade-in-fwd" key={key}>
+                    <picture>
+                        <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.image}`} type="image/webp"/>
+                        <img className="w-14 mx-auto" src={`${process.env.REACT_APP_URL_IMG}${value.image}`} alt="Exhibition & Expo" loading="lazy" />
+                    </picture> 
+
+                    <div className='space-y-3'> 
+                    
+                        <div className="font-bold xl:text-xl lg:text-lg md:text-lg text-lg mt-5 ">
+                            <div dangerouslySetInnerHTML={createMarkup(value.name)} />
+                        </div>
+                        <div className="mt-5 line-clamp-3">
+                            <div dangerouslySetInnerHTML={createMarkup(value.description)} />
+                        </div>
+                    
+                        <div className='mx-auto text-center w-full'>
+                            <Link to={`${value.link}`} aria-label={`link to show ${value.link}`}><p className='w-max  border-blue-500 font-semibold text-blue-500 text-center mx-auto'>Learn More </p> </Link>
+                            </div>
                         </div>
                     </div>
             ))}                  
@@ -239,7 +270,7 @@ customers are saying about us.</h2>
                   <div className={`carousel-item  px-5  ${counts === key ? 'flex xl:grid lg:grid md:grid  xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 flex-col-reverse gap-9 items-center slide-headline ' : 'hidden'  }`} key={key}>
                       <div className="xl:space-y-5 lg:space-y-5 space-y-2 relative " >
 
-                          <div className={`xl:text-5xl lg:text-3xl text-3xl  xl:leading-[53px] lg:leading-[39px] leading-[39px] font-bold text-left text-headline-benner bounce-top pe-10 text-slate-700`}>
+                          <div className={`xl:text-5xl lg:text-3xl text-3xl xl:leading-[53px] lg:leading-[39px] leading-[39px] font-bold text-left text-headline-benner bounce-top pe-10 text-slate-700`}>
                          
                           {<div dangerouslySetInnerHTML={createMarkup(value.title)} /> }
                           </div>
@@ -268,6 +299,7 @@ customers are saying about us.</h2>
         )
     }
 
+
     return (
         
             <>  
@@ -289,7 +321,7 @@ customers are saying about us.</h2>
                     </div>
 
                     <div className="container mx-auto text-center xl:space-y-5 lg:space-y-5 space-y-5 rounded px-5 xl:py-14 lg:py-14 p-7 bg-sky-50">
-                        <div className='flex justify-center text-center mb-10'>
+                        <div className='flex justify-center text-center'>
                             <div className="justify-center text-blue-600 text-sm font-bold leading-6 tracking-wide uppercase whitespace-nowrap items-stretch bg-sky-100 px-4 py-3 rounded-lg self-start max-w-[auto] text-center animations-element" data-animation="fade-in-fwd">
                                 Our Services
                             </div>
@@ -300,8 +332,8 @@ customers are saying about us.</h2>
                             Improve Your Event, Transform Your Experience
                         </h2>
 
-                        <div className="">
-                            <p className="xl:px-32 lg:px-32 px-5 xl:mx-10 lg:mx-10 mx-0 mb-5 font-base py-5 animations-element portofolio-description" data-animation="slide-top">
+                        <div>
+                            <p className="xl:px-32 lg:px-32 px-5 xl:mx-10 lg:mx-10 mx-0 font-base py-5 animations-element portofolio-description italic" data-animation="slide-top">
                             At Garuda Organizer, we are proud to offer a comprehensive range of services designed to make your event extraordinary. Whether it's a corporate meeting, incentive program, conference or exhibition, we bring creativity, precision and innovation to every aspect of event planning and execution. Explore our services below.
                             </p>
                         </div>
@@ -309,7 +341,7 @@ customers are saying about us.</h2>
                         <div className="w-full">
                             <div className="flex flex-wrap xl:grid lg:grid md:grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2  xl:gap-5 lg:gap-5 gap-8 items-center place-content-center text-center xl:py-14 lg:py-14 py-7 xl:px-5 lg:px-5 md:px-5 px-3">
                                 {service.map((value,keys) => (
-                                    <div className={`mx-auto text-center bg-white text-black shadow rounded-xl xl:px-5 lg:px-5 md:px-5 px-10 animations-element border icon-services py-10 cursor-pointer`} data-animation="fade-in-fwd" key={keys}>
+                                    <div className={`mx-auto text-center bg-white text-black shadow rounded-xl xl:px-5 lg:px-5 md:px-5 px-10 animations-element border icon-services py-10 cursor-pointer h-[350px]`} data-animation="fade-in-fwd" key={keys}>
                                          <picture>
                                             <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.image}`} type="image/webp"/>
                                             <img className="w-14 mx-auto" src={`${process.env.REACT_APP_URL_IMG}${value.image}`} alt="Exhibition & Expo" loading="lazy" />
@@ -334,51 +366,62 @@ customers are saying about us.</h2>
                         </div>
                     </div>
         
-                    <div className="bg-mobile-blue py-20 xl:mb-20 lg:mb-20 mb-0">
-                        <div className="container mx-auto px-5">
-                                
-                                 <div className="w-full mt--0 max-md:max-w-full">
-                                    <div className="gap-5 flex space-y-5 xl:flex-row lg:flex-row flex-col max-md:flex-col max-md:items-stretch max-md:gap-0">
-                                        <div className="flex flex-col items-stretch xl:w-[51%] lg:w-[51%] w-full max-md:w-full max-md:ml-0 animations-element opacity-0" data-animation="fade-in-fwd">
-                                            <div className="flex flex-col self-stretch items-stretch my-auto px-5 max-md:max-w-full max-md:mt-10">
-                                                <div className="justify-center text-blue-600 text-sm font-bold leading-6 tracking-wide uppercase whitespace-nowrap items-stretch bg-sky-100 px-4 py-3 rounded-lg self-start">
-                                                    Why Choose Us?
-                                                </div>
-                                                <div className="justify-center text-slate-700 xl:text-5xl lg:text-4xl text-3xl font-bold leading-[39px] tracking-normal mt-9 max-md:max-w-full">
-                                                    We bring solutions to
-                                                    <br />
-                                                    manage your event
-                                                    <br />
-                                                    way works best.
-                                                </div>
-                                                <div className="grid grid-cols-2 grid-rows-2 items-stretch justify-between gap-5 mt-11 max-md:max-w-full max-md:flex-wrap max-md:mt-10">
-                                                  {why_choose_us.map((value,key) => (
-                                                      <div className="flex-col items-stretch" key={key}>
-                                                      <div className="justify-center text-slate-700 xl:text-xl lg:text-lg  text-md font-bold leading-7 tracking-normal">
-                                                          {key + 1}<span className="text-slate-700"><div dangerouslySetInnerHTML={createMarkup(value.description)} /></span>
-                                                      </div>
-                                                      </div>
-                                                    ))}
-                                                   
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col items-stretch xl:w-[49%] lg:w-[49%] w-full xl:ml-5 lg:ml-5 ml-0 max-md:w-full max-md:ml-0 " >
-                                            <div className="bg-blue-600 flex grow justify-center w-full xl:px-12 lg:px-12 md:px-5 px-0 xl:py-12 lg:py-12 md:py-5 py-5 xl:mt-10 lg:mt-10 md:mt-5 mt-0 items-center max-md:max-w-full max-md:mt-10 max-md:px-5 rounded-xl">
-                                                <div className=" flex relative justify-center mt-2.5 items-start animations-element" data-animation="fade-in-fwd">
+                    <div className="bg-mobile-blue xl:py-14 lg:py-14 p-7 mb-0">
+                        <div className='container mx-auto'>
+                        <div className=" bg-white px-10">
+            <div className="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
+              <div className="flex flex-col  ">
+                <div className="flex z-10 flex-col self-stretch my-auto text-black max-md:my-10 max-md:max-w-full space-y-5">
+                  <div className="justify-center self-start px-3.5 py-4  text-sm font-bold whitespace-nowrap bg-sky-100 rounded-xl ">
+                    WHY CHOOSE US
+                  </div>
+                  <h2 className="text-slate-700 xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[53px] leading-[39px] tracking-normal portofolio-headline animations-element capitalize" data-animation="slide-top">
+                    We Bring Solutions To Manage Your Event Way Works Best.
+                  </h2>
 
-                                                    <CarouselAbout data={why_choose_us}/>
+                {why_choose_us.map((value,key) => (
+                      <div className="flex gap-1 justify-between pr-20 mt-11 mr-2.5 max-md:flex-wrap max-md:pr-5 max-md:max-w-full animations-element" data-animation="fade-in-fwd" key={key}>
+                      <div className="hexagon-border ">
+                            <img src='/images/icon/hextagon-icon.png' alt='' className='absolute'/>
+                            <picture>
+                                <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.image}`} type="image/webp"/>
+                                <img className="w-14 p-2 mx-auto" src={`${process.env.REACT_APP_URL_IMG}${value.image}`} alt="Exhibition & Expo" loading="lazy" />
+                            </picture> 
+                        </div>
+                        <div className="flex flex-col flex-1 my-auto max-md:max-w-full space-y-2" data-animation="fade-in-fwd">
+                          <div className="font-bold xl:text-xl lg:text-lg md:text-lg text-lg ">
+                            One Stop Shopping Solution
+                          </div>
+                          <div className="">
+                            <div dangerouslySetInnerHTML={createMarkup(value.description)} />
+                          </div>
+                        </div>
+                      </div>
+                    
+                ))}
+                
+                 
+                </div>
+              </div>
+              <div className="flex flex-col w-[65%] justify-center item-why">
+               
+                <div className='relative flex justify-center' >
+                   
+                    <div className="gallery flex justify-center">
+                        {why_choose_us_other_images.map((value,key) => (
+                            <img key={key} src={`${process.env.REACT_APP_URL_IMG}${value}`} alt="a house on a mountain" />
+                        ))}
+                    
+                    </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                </div>
+              </div>
+            </div>
+          </div>
                         </div>
                     </div>
                 
-                    <div className="bg-sky-50 container mx-auto py-14">
+                    <div className="bg-sky-50 container mx-auto py-14 z-40 relative">
                         <div className="px-5 ">
                             <div className="text-center xl:space-y-5 lg:space-y-5 space-y-2 xl:px-5 lg:px-5">
                              <div className="xl:space-y-5 lg:space-y-5 space-y-2 xl:px-28 lg:px-28 px-5">
@@ -394,7 +437,7 @@ customers are saying about us.</h2>
                                 </h2>
 
                                 <div className="">
-                                    <p className="xl:px-32 lg:px-10 px-5 xl:mx-10 lg:mx-0 mx-0 mb-5 font-base py-5 animations-element portofolio-description text-md" data-animation="slide-top">
+                                    <p className="xl:px-32 lg:px-10 px-5 xl:mx-10 lg:mx-0 mx-0 mb-5 font-base py-5 animations-element portofolio-description text-md italic" data-animation="slide-top">
                                     Our portfolio is a testament to the passion, creativity and dedication we bring to every event. Every project reflects our tireless efforts to provide unforgettable experiences, blending innovation and artistry in every element, affirming our commitment to provide the best for every client.
                                     </p>
                                 </div>
@@ -407,8 +450,8 @@ customers are saying about us.</h2>
                                                 <Portfolio key={key} data={true} data_image={`${process.env.REACT_APP_URL_IMG}${value.image}`} data_description={value.description} data_name={value.name}/>
                                             ))
                                         ) : 
-                                        <SkeletonPortofolio/>}
-                                        </div>
+                                    <SkeletonPortofolio/>}
+                                    </div>
                                 </div>
                             </div>
                         </div>

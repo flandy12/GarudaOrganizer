@@ -80,7 +80,7 @@ const Navbar = () => {
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
             </svg></button>
         
-            <div id="dropdownNavbar" className={`z-10 ${activeDropdown === true ? `${IconHamburger === true ? "xl:w-max lg:w-max w-full xl:absolute lg:absolute m-0 h-max " : "absolute m-0 h-max xl:inset-y-20 lg:inset-y-20 md:inset-y-14 "}` : 'hidden'} font-normal bg-white divide-y divide-gray-100 rounded-lg shadow  `}>
+            <div id="dropdownNavbar" className={`z-20 ${activeDropdown === true ? `${IconHamburger === true ? "xl:w-max lg:w-max w-full xl:absolute lg:absolute m-0 h-max " : "absolute m-0 h-max xl:inset-y-20 lg:inset-y-20 md:inset-y-14 "}` : 'hidden'} font-normal bg-white divide-y divide-gray-100 rounded-lg shadow  `}>
                 <ul className="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
                   {
                     navbarLink.map((value, key) => (

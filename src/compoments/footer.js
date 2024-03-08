@@ -7,7 +7,7 @@ const Footer = (props) => {
   
     const Footer  = () => {
         return (
-            <footer className="footer-master footer-text text-slate-300 bg-blue-950">
+            <footer className="footer-master footer-text text-slate-300 bg-blue-950 h-full">
             <div className='container mx-auto'>
                     <div className="px-8 py-20 ">
                         <div className="xl:grid lg:grid md:grid xl:grid-cols-4 md:grid-cols-3 grid-cols-4 block gap-10 justify-between">

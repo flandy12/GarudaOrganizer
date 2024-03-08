@@ -1,7 +1,7 @@
 
 import './App.css';
 import './index.css';
-import './css/style.min.css';
+import './css/style.css';
 import './css/animation.min.css';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './page/home';

@@ -7,16 +7,12 @@ import SEO from "../compoments/seo";
 
 const AboutPage = () => {
     const [loading, setLoading] = useState (true);
-    const [title, setTitle] = useState ('');
     const [message, setMessage] = useState('message');
     const [benner, setBanner] = useState('');
     const [wording, setWording] = useState('');
+    const [vision_mission, setVision_Mission] = useState('');
+    const [image, setImage] = useState('');
 
-    const divStyle = {
-        backgroundImage: 'url(' + `${process.env.REACT_APP_URL_IMG}${benner}` + ')',
-        
-    }; 
-    
     useEffect(() => {
         CallApi('about-us', 'GET')
         .then(ressponse => {
@@ -24,17 +20,11 @@ const AboutPage = () => {
             scrollToTop();
            if(ressponse.success === true) {
                 setLoading(false);
-                setTitle(ressponse.title);
-                setMessage(ressponse.message);
+                setMessage(ressponse.results.banner_wording);
                 setBanner(ressponse.results.banner);
                 setWording(ressponse.results.wording);
-                
-                // setPartner(ressponse.results.partner);
-                // setProject(ressponse.results.project);
-                // setSector(ressponse.results.sector);
-                // setService(ressponse.results.service);
-                // setTestimonial(ressponse.results.testimonial);
-         
+                setVision_Mission(ressponse.results.vision_mission);
+                setImage(ressponse.results.image);
            } else {
             alert('Error Page');
             
@@ -53,77 +43,93 @@ const AboutPage = () => {
         og_image={`/public/favicon.ico`}
         />
          {loading === true ? <Loading/> : (
-            <>
-            <div className="bg-black">
-                <div className="bg-outside-2 z-0 opacity-50 text-white relative" style={divStyle}> </div>
-                <div className="container mx-auto relative h-full px-5 z-10 text-white">
-                        <div className="absolute xl:bottom-24 lg:bottom-24 md:bottom-24 bottom-20 space-y-4">
-                            <h1  className="font-semibold xl:text-4xl lg:text-4xl md:text-4xl text-2xl">About Us</h1>
-                            <p className="xl:pr-52 lg:pr-52 md:pr-20 pr-14">{message !== ' ' ? 'Satu momen untuk kenangan abadi, kami memahami visi hiburan yang terletak pada pengalaman baik dan momen mempesona yang dapat menciptakan acara tak terlupakan yang dihadiri orang seperti rapat virtual, nikah online dan acar lainnya. Layanan kami dapat membuat beberapa ide acara online atau pertunjukan acara offline' : ''}</p>
-                        </div>
-                </div>
-            </div>
+             <div >
+  
+                <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-16 py-12 w-full min-h-[500px] max-md:px-5 max-md:max-w-full bg-black">
+                    <picture>
+                    <source  srcSet={`${process.env.REACT_APP_URL_IMG}${benner}`} type="image/webp"/>
+                    <img className="object-cover absolute inset-0 size-full opacity-50" src={`${process.env.REACT_APP_URL_IMG}${benner}`}alt="Exhibition & Expo" loading="lazy" />
+                </picture> 
+                    <div className="flex relative flex-col mt-40 mb-28 max-w-full w-[726px] max-md:my-10">
+                    <div className="self-center text-6xl font-bold text-white max-md:max-w-full max-md:text-4xl">
+                        About Us
+                    </div>
+                    <div className="mt-10 text-base text-center w-[726px] text-white text-opacity-80 max-md:mt-10 max-md:max-w-full" dangerouslySetInnerHTML={createMarkup(message)} />
+                    </div>
+                    </div>
+   
+                <div className="container mx-auto text-center px-5">
+              
+                <div className="flex flex-col px-5 bg-white">
          
-            <div className="container mx-auto">
-                <div className="py-10 xl:px-0 lg:px-0 px-5 ">
-                    <div className="py-10 border-b-2 border-blue-500 w-max">
-                        <nav className="flex" aria-label="Breadcrumb">
-                        <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                            <li className="inline-flex items-center">
-                            <Link to="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 ">
-                                <svg className="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-                                </svg>
-                                Home
-                            </Link>
-                            </li>
-            
-                            <li aria-current="page">
-                            <div className="flex items-center">
-                                <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-                                </svg>
-                                <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">About</span>
-                            </div>
-                            </li>
-                        </ol>
-                        </nav>
-                    </div>
-                    
-                    <div className="py-10 space-y-5">
-                    {<div dangerouslySetInnerHTML={createMarkup(wording)} /> }
-                        {/* <h1 className="xl:text-3xl lg:text-3xl md:text-3xl text-2xl font-semibold">Hadirkan Kesenangan Bersama Garuda </h1>
-                        <div className="space-y-4">
-                            <p >
-                            Bagi Anda yang ingin menyelenggarakan berbagai acara dan tidak ingin acara terganggu dan berjalan lancar, Anda bisa meminta bantuan event organizer online yang berpengalaman. Tim profesional mereka siap membantu Anda dalam menyelenggarakan berbagai acara. 
-                            </p>
-                            <p>
-                            Salah satu event organizer online atau offline terbaik adalah Garuda. Garuda melayani jasa nikah online, virtual meeting, acara sekolah, acara budaya, seminar, outbound, konser dan beberapa acara online dan offline lainnya sekaligus kami dokumentasikan agar bisa membuat acara menjadi mengesankan. 
-                            </p>
-                            <p>
-                            Sebagai salah satu event organizer kami selalu siap membantu anda dengan berbagaik konsep acara yang anda inginkan. Hubungi kami via kontak sekarang juga untuk mendapatkan informasi lebih lanjut.
-                            </p>
+                <div className="self-center xl:mt-24 lg:mt-24 md:mt-0 w-full max-md:mt-10 max-md:max-w-full">
+                  <div className="flex xl:flex lg:flex xl:flex-row lg:flex-row md:flex-col-reverse md:space-y-10 gap-5 max-md:flex-col-reverse max-md:gap-0 ">
+                    <div className="flex flex-col text-left xl:w-[54%] lg:w-[54%] md:w-full max-md:ml-0 max-md:w-full">
+                      <div className="my-auto text-2xl max-md:mt-10 max-md:max-w-full">
+                        <span className="self-start px-5 py-2 font-bold text-white whitespace-nowrap rounded-3xl border border-blue-300 border-solid capitalize bg-cs">
+                          company history
+                        </span>
+                        <div className="xl:mt-14 lg:mt-14 md:mt-10 max-md:pe-0 leading-8 text-black max-md:mt-10 max-md:max-w-full">
+                            <div className="text-left me-10" dangerouslySetInnerHTML={createMarkup(wording)} />
                         </div>
-
-                        <h1 className="font-semibold">
-                        Penyelenggara Acara Acara Online dan Offline
-                        </h1>
-
-                        <div className="space-y-4">
-                            <p >
-                            Bagi Anda yang ingin menyelenggarakan berbagai acara dan tidak ingin acara terganggu dan berjalan lancar, Anda bisa meminta bantuan event organizer online yang berpengalaman. Tim profesional mereka siap membantu Anda dalam menyelenggarakan berbagai acara. 
-                            </p>
-                            <p>
-                            Salah satu event organizer online atau offline terbaik adalah Garuda. Garuda melayani jasa nikah online, virtual meeting, acara sekolah, acara budaya, seminar, outbound, konser dan beberapa acara online dan offline lainnya sekaligus kami dokumentasikan agar bisa membuat acara menjadi mengesankan. 
-                            </p>
-                            <p>
-                            Sebagai salah satu event organizer kami selalu siap membantu anda dengan berbagaik konsep acara yang anda inginkan. Hubungi kami via kontak sekarang juga untuk mendapatkan informasi lebih lanjut.
-                            </p>
-                        </div> */}
+                      </div>
                     </div>
+                    <div className=" flex-col xl:ml-5 lg:ml-5 md:ml-0 xl:w-[46%] lg:w-[46%] md:w-full max-md:ml-0 max-md:w-full object-cover">
+                      <img
+                        loading="lazy"
+                        srcSet={`${image}`}
+                        alt="About Asset"
+                        className="w-full aspect-[0.84] object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col xl:px-20 lg:px-20 md:px-5 py-10 mt-20 w-full text-2xl text-center bg-blue-100 max-md:px-5 max-md:mt-10 max-md:max-w-full rounded-lg">
+                
+                  <div className="flex justify-center self-start px-5 py-2 font-bold text-white whitespace-nowrap rounded-3xl border border-blue-300 border-solid capitalize bg-cs mx-auto ">
+                        our mission & vission
+                    </div>
+                  <div className="mt-6 mr-3.5 ml-4 leading-8 text-black max-md:mr-2.5 max-md:max-w-full">
+                      <div dangerouslySetInnerHTML={createMarkup(vision_mission)} />  
+                  </div>
+                </div>
+            <div className="self-center my-20 w-full max-md:mt-10 max-md:max-w-full">
+              <div className="flex xl:flex-row lg:flex-row md:flex-col-reverse gap-5 max-md:flex-col-reverse max-md:gap-0 max-md:">
+                <div className="flex xl:w-[50%] lg:w-[50%] md:w-full flex-col max-md:ml-0 max-md:w-full">
+                  <div className="flex flex-col self-stretch my-auto text-2xl text-black  py-5 rounded-lg w-100">
+                    <div className="text-5xl font-bold max-md:max-w-full max-md:text-4xl ">
+                      Have a question ?<br />
+                      Our team is happy <br />
+                      to assist you
+                    </div>
+                    <div className="mt-9 leading-8 max-md:max-w-full">
+                      Don't hesitate to contact our team and share your ideas,
+                      questions, or needs. We're here to help make any challenges you
+                      face a reality. Together, let's find the right solution to meet
+                      your needs!
+                    </div>
+                    <div className="relative shrink-0 mt-2 border-b border-solid border-b-black h-[46px] max-md:max-w-full" />
+                        <Link to={'/contact'} className="relative">
+                        <div className="justify-center items-start py-3 pr-16 pl-4 mt-7 max-w-full whitespace-nowrap bg-sky-200 rounded-3xl   w-[190px] max-md:pr-5 relative">
+                        Contact Us
+                        <img src="/images/icon/ArrowRightAbout.png" alt="icon-right" className="absolute top-0 right-5" />
+                        </div>
+                        </Link>
+                  </div>
+                </div>
+                <div className="xl:flex lg:flex md:hidden sm:hidden justify-center m-auto flex-col  max-md:mx-5">
+                  <img
+                    loading="lazy"
+                    srcSet="/images/asset/contact-us-about.png"
+                    className=" max-md:mt-10"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
                 </div>
             </div>
-            </>
          )}
         </>
     )

@@ -33,7 +33,7 @@ const Portfolio = (props) => {
         return (
             <div className={`bg-white border border-gray-200 relative gap-10 ${props.data === true ? ' xl:w-96 lg:w-72 md:w-fit' : ''} text-left p-3 rounded-2xl `}>
                 <div  className="">
-                    <img className="rounded-2xl border w-full aspect-video " src={`${props.data_image}`} alt={`${props.data_name}`}/>
+                    <img className="rounded-xl border w-full aspect-video " src={`${props.data_image}`} alt={`${props.data_name}`}/>
                 </div>
                 <div className="xl:px-2 lg:px-2 md:px-2 py-5">
                     <Link tp="#">

@@ -10,20 +10,24 @@ const RecruitmentPage = () => {
     const [loading, setLoading] = useState(true);
     const [banner, setBanner] = useState('');
     const [wording, setWording] = useState('');
-    const [results, setResults] = useState([]);
     const [banner_description, setBannerDescription] = useState('');
-
+    const [other_images , setOtherImages] = useState([]);
+    const [image , setImage] = useState([]);
+    const [title, setTitle] = useState('');
+    const [hover_element, setHoverElement] = useState('');
     useEffect(() => {
         CallApi(`service?url=${params.replace('/','')}`, 'GET')
         .then(ressponse => {
             scrollToTop();
             if(ressponse.success === true) {
                 setLoading(false);
-                setResults(ressponse.results);
                 setBanner(ressponse.results.banner);
                 setWording(ressponse.results.wording);
-                setBannerDescription(ressponse.results.banner_description);
-               
+                setBannerDescription(ressponse.results.description);
+                setOtherImages(ressponse.results.other_images);
+                setImage(ressponse.results.image);
+                setTitle(ressponse.results.title);
+                console.log(ressponse);
             } else {
                 alert('error');
             
@@ -31,10 +35,11 @@ const RecruitmentPage = () => {
         })
     },[])
 
-    const divStyle = {
-        backgroundImage: 'url(' + `${results === null ? 'https://www.luvisa.id/images/content/phpzvvcyp_resized.png' :`${process.env.REACT_APP_URL_IMG}${banner}` }` + ')',
-    }; 
-    
+    const MouseHover = (e) => {
+        e.preventDefault();
+        setHoverElement(e.target.getAttribute('data-target'));
+    }
+
     return (
        <>
         <SEO 
@@ -47,58 +52,64 @@ const RecruitmentPage = () => {
             />
         {
              loading === false ? (
-                <>
-                <div className="bg-black">
-                        <div className="bg-outside-2 z-0 opacity-50 text-white relative" style={divStyle}> </div>
-                            <div className="container mx-auto relative h-full px-5 z-10 text-white">
-                            <div className="absolute xl:bottom-24 lg:bottom-24 md:bottom-24 bottom-20 space-y-4">
-                            <h1 className="font-semibold xl:text-4xl lg:text-4xl md:text-4xl text-2xl">Recruitment Event</h1>
-                                <p className="xl:pr-52 lg:pr-52 pr-20">{banner_description}</p>
-                            </div>
-                            </div>
-                </div>
-              
-                
-                <div className="container mx-auto">
-                    
-                    <div className="py-10 xl:px-0 lg:px-0 px-5 ">
-                        <div className="py-10 border-b-2 border-blue-500 w-max">
-                            <nav className="flex" aria-label="Breadcrumb">
-                            <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                                <li className="inline-flex items-center">
-                                <Link to="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
-                                    <svg className="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-                                    </svg>
-                                    Home
-                                </Link>
-                                </li>
-                                <li>
-                                <div className="flex items-center">
-                                    <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-                                    </svg>
-                                    <span className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2  ">Service</span>
+                <div>
+                    <div className="flex overflow-hidden relative flex-col justify-center items-center self-stretch px-16 py-12 w-full min-h-[500px] max-md:px-5 max-md:max-w-full bg-black">
+                    <picture>
+                    <source srcSet={banner} type="image/webp"/>
+                    <img className="object-cover absolute inset-0 size-full opacity-50" src={banner} alt="Recruitment Event" loading="lazy" />
+                </picture> 
+                    <div className="flex relative flex-col mt-40 mb-28 max-w-full w-[726px] max-md:my-10">
+                    <div className="self-center text-6xl font-bold text-white max-md:max-w-full max-md:text-4xl">
+                        Recruitment Event
+                    </div>
+                    <div className="mt-10 text-base text-center w-[726px] text-white text-opacity-80 max-md:mt-10 max-md:max-w-full" dangerouslySetInnerHTML={createMarkup(banner_description)} />
+                    </div>
+                    </div>
+                    <div className="container mx-auto">
+                        <div className="flex flex-col items-center pb-12 bg-white px-8">
+                            <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">
+                                <div className="flex max-md:flex-col-reverse gap-5 ">
+                                    <div className="flex flex-col w-[46%] max-md:ml-0 max-md:w-full">
+                                        <div className="flex flex-col grow place-content-center max-md:max-w-full">
+                                        <span className={`justify-center text-center self-start px-5 py-3 font-bold text-white whitespace-nowrap rounded-3xl border border-blue-300 border-solid capitalize bg-cs ${title === 'null' ? 'hidden' : ''}`}>
+                                        {title}
+                                        </span>
+                                        <div className="mt-8 text-base text-black max-md:max-w-full" dangerouslySetInnerHTML={createMarkup(wording)} />
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-col ml-5 w-[54%] max-md:ml-0 max-md:w-full">
+                                    
+                                    <picture >
+                                        <source srcSet={`${image} `} type="image/webp"/>
+                                        <img className={`w-full object-cover rounded aspect-[1.61] max-md:max-w-full`} src={`${process.env.REACT_APP_URL_IMG}${image} `} alt="Recruitment Event" loading="lazy"/>
+                                    </picture> 
                                 </div>
-                                </li>
-                                <li aria-current="page">
-                                <div className="flex items-center">
-                                    <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-                                    </svg>
-                                    <span className="ms-1 text-sm font-medium text-gray-700 md:ms-2 ">Recruitment Event</span>
                                 </div>
-                                </li>
-                            </ol>
-                            </nav>
-                        </div>
-                       
-                        <div className="py-10 space-y-5">
-                        {<div dangerouslySetInnerHTML={createMarkup(wording)} /> }
+                            </div>
+                            <div className="w-full max-md:mt-10 max-md:max-w-full">
+                                <div className="my-8 text-2xl font-semibold  text-blue-500 uppercase max-md:mt-10 max-md:max-w-full">
+                                    <h1>Project</h1>
+                                </div>
+                                <div className="flex justify-between gap-5 max-md:flex-col max-md:gap-0">
+                                    <div className="flex max-md:flex-col justify-between gap-5 w-full">
+                                            {other_images.map((value,keys) => (
+                                                <div className={`relative rounded-lg overflow-hidden cursor-pointer ${hover_element === 'element-'+keys ? 'bg-black ' : ''} `} onMouseEnter={MouseHover} onTouchStart={MouseHover} key={keys}>
+                                                <picture >
+                                                    <source srcSet={`${value.image} `} type="image/webp"/>
+                                                    <img className={`h-full object-cover ${hover_element === 'element-'+keys ? 'opacity-55' : ''} `} src={`${value.image} `} alt="Recruitment Event" loading="lazy" data-target={`element-${keys}`}/>
+                                                </picture> 
+                                                <div className={`absolute bottom-5 left-4 text-white ${hover_element === 'element-'+keys  ? ' ' : 'hidden'}`}>
+                                                    <div className="font-semibold text-base" dangerouslySetInnerHTML={createMarkup(value.title.replace('-', "<br>" ))} />
+                                                </div>
+                                            </div>
+                                            ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </>
             ) : <Loading/>
         }
         </>
