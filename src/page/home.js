@@ -88,7 +88,7 @@ const HomePage = () => {
                 setTestimonial(ressponse.results.testimonial);
                 setWhyChooseUs(ressponse.results.why_choose_us);
                 setWhyChooseUsOtherImages(ressponse.results.why_choose_us_other_images);
-                console.log(ressponse);
+               
            } else {
             alert('Error Page');
            }
@@ -369,15 +369,15 @@ customers are saying about us.</h2>
                     <div className="bg-mobile-blue xl:py-14 lg:py-14 p-7 mb-0">
                         <div className='container mx-auto'>
                         <div className=" bg-white px-10">
-            <div className="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
-              <div className="flex flex-col  ">
-                <div className="flex z-10 flex-col self-stretch my-auto text-black max-md:my-10 max-md:max-w-full space-y-5">
-                  <div className="justify-center self-start px-3.5 py-4  text-sm font-bold whitespace-nowrap bg-sky-100 rounded-xl ">
-                    WHY CHOOSE US
-                  </div>
-                  <h2 className="text-slate-700 xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[53px] leading-[39px] tracking-normal portofolio-headline animations-element capitalize" data-animation="slide-top">
-                    We Bring Solutions To Manage Your Event Way Works Best.
-                  </h2>
+                            <div className="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
+                        <div className="flex flex-col  ">
+                            <div className="flex z-10 flex-col self-stretch my-auto text-black max-md:my-10 max-md:max-w-full space-y-5">
+                            <div className="justify-center self-start px-3.5 py-4  text-sm font-bold whitespace-nowrap bg-sky-100 rounded-xl ">
+                                WHY CHOOSE US
+                            </div>
+                            <h2 className="text-slate-700 xl:text-5xl lg:text-3xl text-3xl font-bold xl:leading-[53px] lg:leading-[53px] leading-[39px] tracking-normal portofolio-headline animations-element capitalize" data-animation="slide-top">
+                                We Bring Solutions To Manage Your Event Way Works Best.
+                            </h2>
 
                 {why_choose_us.map((value,key) => (
                       <div className="flex gap-1 justify-between pr-20 mt-11 mr-2.5 max-md:flex-wrap max-md:pr-5 max-md:max-w-full animations-element" data-animation="fade-in-fwd" key={key}>

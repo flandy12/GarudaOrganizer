@@ -28,8 +28,7 @@ const DigitalPage = () => {
                 setBannerDescription(ressponse.results === null ? ressponse.results : ressponse.results.description);
                 setOtherImages(ressponse.results.other_images);
                 setImage(ressponse.results.image);
-                setTitle(ressponse.results.title);
-                console.log(ressponse);
+                setTitle(ressponse.results.title);              
             } else {
                 alert('error');
             

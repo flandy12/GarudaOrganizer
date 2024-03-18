@@ -17,10 +17,11 @@ import AboutPage from './page/aboutPage';
 import Layout from './page/layout';
 import SEO from './compoments/seo';
 import NotFound from './page/error/error_404';
+import MaintenancePage from './page/error/maintenance';
 
 function App() {
 
-  
+  console.log(process.env.REACT_APP_MAINTENANCE)
   return (
      <HelmetProvider>
         <Layout>
@@ -31,18 +32,25 @@ function App() {
               author={'Garuda Organizer'}
               url={window.location.href}
             />
-            <Routes>
-              <Route path="/" element={ <HomePage/> } />
-              <Route path="/about" element={ <AboutPage/> } />
-              <Route path="/portofolio" element={ <PortofolioPage/> } />
-              <Route path="/services" element={ <ServicesPage/> } />
-              <Route path="/contact" element={ <ContactUs/> } />
-              <Route path="/mice" element={ <MicePage/> } />
-              <Route path='/recruitment' element={ <RecruitmentPage/> } />
-              <Route path='/digital-services' element={ <DigitalPage/> } />
-              <Route path='/corporate-hiring' element={ <CorporateHiringPage/> } />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+
+                { process.env.REACT_APP_MAINTENANCE === 'true'?  
+                <Routes>
+                  <Route path="*" element={ <MaintenancePage/> } />
+                </Routes> : (
+                  <Routes>
+                    <Route path="/" element={ <HomePage/> } />
+                    <Route path="/about" element={ <AboutPage/> } />
+                    <Route path="/portofolio" element={ <PortofolioPage/> } />
+                    <Route path="/services" element={ <ServicesPage/> } />
+                    <Route path="/contact" element={ <ContactUs/> } />
+                    <Route path="/mice" element={ <MicePage/> } />
+                    <Route path='/recruitment' element={ <RecruitmentPage/> } />
+                    <Route path='/digital-services' element={ <DigitalPage/> } />
+                    <Route path='/corporate-hiring' element={ <CorporateHiringPage/> } />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                ) }
+           
            
 
         </Layout>

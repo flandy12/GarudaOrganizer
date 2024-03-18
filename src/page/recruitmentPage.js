@@ -27,7 +27,6 @@ const RecruitmentPage = () => {
                 setOtherImages(ressponse.results.other_images);
                 setImage(ressponse.results.image);
                 setTitle(ressponse.results.title);
-                console.log(ressponse);
             } else {
                 alert('error');
             
