@@ -18,25 +18,21 @@ import Layout from './page/layout';
 import SEO from './compoments/seo';
 import NotFound from './page/error/error_404';
 import MaintenancePage from './page/error/maintenance';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [ip,setIP] = useState('');
 
-  console.log(process.env.REACT_APP_MAINTENANCE)
-  return (
-     <HelmetProvider>
-        <Layout>
-          <SEO 
-              title={'Garuda Organizer - Perusahaan Profesional Di Bidang Jasa Event Organizer (EO) Jakarta'}
-              meta_description={'Garuda Organizer - Jelajahi Kreativitas dan Kelengkapan Dokumentasi Acara bersama Garuda Organizer, Jasa Event Organizer Profesional di Jakarta dengan Konsep Unik!'}
-              meta_keywords={'eo jakarta, eo indonesia, event organizer, event online, event management, bazzar, mice, event, event tebaik, jakarta'}
-              author={'Garuda Organizer'}
-              url={window.location.href}
-            />
+  const getData = async () => {
+        const response = await fetch("https://geolocation-db.com/json/");
+        const data = await response.json();
+        setIP(data.IPv4);
+  }
 
-                { process.env.REACT_APP_MAINTENANCE === 'true'?  
-                <Routes>
-                  <Route path="*" element={ <MaintenancePage/> } />
-                </Routes> : (
+  const RouteGrup = () => {
+        return (
+          process.env.REACT_APP_MAINTENANCE === 'true' ?
+            ( ip ===  '103.87.79.26' ? 
                   <Routes>
                     <Route path="/" element={ <HomePage/> } />
                     <Route path="/about" element={ <AboutPage/> } />
@@ -49,9 +45,36 @@ function App() {
                     <Route path='/corporate-hiring' element={ <CorporateHiringPage/> } />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
-                ) }
-           
-           
+              :
+                (
+                  <Routes>
+                    <Route path="*" element={ <MaintenancePage/> } />
+                  </Routes>
+                ) )
+             
+            : (
+              <Routes>
+                  <Route path="*" element={ <MaintenancePage/> } />
+                  </Routes>
+            )
+        )
+  }
+  
+  useEffect(() => {
+    getData();
+  }, [])
+    
+  return (
+     <HelmetProvider>
+        <Layout>
+          <SEO 
+              title={'Garuda Organizer - Perusahaan Profesional Di Bidang Jasa Event Organizer (EO) Jakarta'}
+              meta_description={'Garuda Organizer - Jelajahi Kreativitas dan Kelengkapan Dokumentasi Acara bersama Garuda Organizer, Jasa Event Organizer Profesional di Jakarta dengan Konsep Unik!'}
+              meta_keywords={'eo jakarta, eo indonesia, event organizer, event online, event management, bazzar, mice, event, event tebaik, jakarta'}
+              author={'Garuda Organizer'}
+              url={window.location.href}
+            />  
+            <RouteGrup/>           
 
         </Layout>
      </HelmetProvider>
