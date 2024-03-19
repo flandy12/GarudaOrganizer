@@ -390,11 +390,9 @@ customers are saying about us.</h2>
                         </div>
                         <div className="flex flex-col flex-1 my-auto max-md:max-w-full space-y-2" data-animation="fade-in-fwd">
                           <div className="font-bold xl:text-xl lg:text-lg md:text-lg text-lg ">
-                            One Stop Shopping Solution
-                          </div>
-                          <div className="">
                             <div dangerouslySetInnerHTML={createMarkup(value.description)} />
                           </div>
+                          
                         </div>
                       </div>
                     
