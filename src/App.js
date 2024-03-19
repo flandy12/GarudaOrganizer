@@ -24,9 +24,13 @@ function App() {
   const [ip,setIP] = useState('');
 
   const getData = async () => {
-        const response = await fetch("https://geolocation-db.com/json/");
-        const data = await response.json();
-        setIP(data.IPv4);
+       try {
+          const response = await fetch("https://geolocation-db.com/json/");
+          const data = await response.json();
+         setIP(data.IPv4);
+        } catch (error) {
+          
+        }
   }
 
   const RouteGrup = () => {
@@ -61,7 +65,9 @@ function App() {
   }
   
   useEffect(() => {
-    getData();
+    
+      getData();
+    
   }, [])
     
   return (
