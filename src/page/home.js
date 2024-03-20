@@ -60,14 +60,6 @@ const HomePage = () => {
         }
     };
 
-    const divStyle = {
-        backgroundImage: 'url("/images/asset/hex.png")',// Set your desired background color here
-        width: '100%',
-        height: '100%',
-        
-      };
-    
-
     useEffect(() => {    
         // Animation Scroll
         window.addEventListener("scroll", function(e) {
@@ -397,8 +389,7 @@ customers are saying about us.</h2>
                       </div>
                     
                 ))}
-                
-                 
+
                 </div>
               </div>
               <div className="flex flex-col w-[65%] justify-center item-why">

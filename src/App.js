@@ -42,13 +42,8 @@ function App() {
                     <Route path="/" element={ <HomePage/> } />
                     <Route path="/about" element={ <AboutPage/> } />
                     <Route path="/portofolio" element={ <PortofolioPage/> } />
-                    {/* <Route path="/services" element={ <ServicesPage/> } /> */}
                     <Route path="/service/:url"  element={<LayoutPageServices/>} />
-                    {/* <Route path="/contact" element={ <ContactUs/> } />
-                    <Route path="/mice" element={ <MicePage/> } />
-                    <Route path='/recruitment' element={ <RecruitmentPage/> } />
-                    <Route path='/corporate-hiring' element={ <CorporateHiringPage/> } />
-                    <Route path='/digital-services' element={ <DigitalPage/> } /> */}
+                    <Route path="/contact" element={ <ContactUs/> } />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
               :

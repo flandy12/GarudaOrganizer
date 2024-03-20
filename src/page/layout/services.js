@@ -4,7 +4,6 @@ import SEO from "../../compoments/seo";
 import CallApi from "../../api/Api";
 import { createMarkup, scrollToTop } from "../../compoments/htmlTag";
 import { useParams } from "react-router-dom";
-import NotFound from "../error/error_404";
 
 const LayoutPageServices = ({}) => {
     const {url} = useParams();
@@ -16,8 +15,7 @@ const LayoutPageServices = ({}) => {
     const [other_images , setOtherImages] = useState([]);
     const [image , setImage] = useState([]);
     const [hover_element, setHoverElement] = useState('');
-    const [isFound, setIsfound] = useState(false);
-
+   
     useEffect(() => {
         CallApi(`service?url=${url}`, 'GET')
         .then(ressponse => {
@@ -30,7 +28,6 @@ const LayoutPageServices = ({}) => {
                 setOtherImages(ressponse.results ? ressponse.results.other_images : '');
                 setImage(ressponse.results ? ressponse.results.image : '');
                 setTitle(ressponse.results ? ressponse.results.title : '');
-                     
             } else {
                 console.log(ressponse);
             }
