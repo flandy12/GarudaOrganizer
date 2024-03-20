@@ -19,6 +19,7 @@ import SEO from './compoments/seo';
 import NotFound from './page/error/error_404';
 import MaintenancePage from './page/error/maintenance';
 import { useEffect, useState } from 'react';
+import LayoutPageServices from './page/layout/services';
 
 function App() {
   const [ip,setIP] = useState('');
@@ -41,12 +42,13 @@ function App() {
                     <Route path="/" element={ <HomePage/> } />
                     <Route path="/about" element={ <AboutPage/> } />
                     <Route path="/portofolio" element={ <PortofolioPage/> } />
-                    <Route path="/services" element={ <ServicesPage/> } />
-                    <Route path="/contact" element={ <ContactUs/> } />
+                    {/* <Route path="/services" element={ <ServicesPage/> } /> */}
+                    <Route path="/service/:url"  element={<LayoutPageServices/>} />
+                    {/* <Route path="/contact" element={ <ContactUs/> } />
                     <Route path="/mice" element={ <MicePage/> } />
                     <Route path='/recruitment' element={ <RecruitmentPage/> } />
-                    <Route path='/digital-services' element={ <DigitalPage/> } />
                     <Route path='/corporate-hiring' element={ <CorporateHiringPage/> } />
+                    <Route path='/digital-services' element={ <DigitalPage/> } /> */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
               :

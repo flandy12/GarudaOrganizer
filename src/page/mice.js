@@ -23,12 +23,12 @@ const MicePage = () => {
             scrollToTop();
             if(ressponse.success === true) {
                 setLoading(false);
-                setBanner(ressponse.results.banner);
-                setWording(ressponse.results.wording);
-                setBannerDescription(ressponse.results.description);
-                setOtherImages(ressponse.results.other_images);
-                setImage(ressponse.results.image);
-                setTitle(ressponse.results.title);
+                setBanner(ressponse.results ? ressponse.results.banner : '');
+                setWording(ressponse.results ? ressponse.results.wording : '');
+                setBannerDescription(ressponse.results ? ressponse.results.description : '');
+                setOtherImages(ressponse.results ? ressponse.results.other_images : '');
+                setImage(ressponse.results ? ressponse.results.image : '');
+                setTitle(ressponse.results ? ressponse.results.title : '');
             } else {
                 alert('error');
               
@@ -63,7 +63,7 @@ const MicePage = () => {
                     <div className="self-center text-6xl font-bold text-white max-md:max-w-full max-md:text-4xl">
                         MICE
                     </div>
-                    <div className="mt-10 text-base text-center w-[726px] text-white text-opacity-80 max-md:mt-10 max-md:max-w-full" dangerouslySetInnerHTML={createMarkup(banner_description)} />
+                    <div className="mt-10 text-base text-center w-[726px] text-white text-opacity-80 max-md:mt-10 max-md:max-w-full"  dangerouslySetInnerHTML={createMarkup(wording)}/>
                     </div>
                 </div>
                 <div className="container mx-auto">
@@ -75,7 +75,7 @@ const MicePage = () => {
                         <span className={`justify-center text-center self-start w-[150px] px-5 py-2 font-bold text-white whitespace-nowrap rounded-3xl border border-blue-300 border-solid capitalize bg-cs ${title === 'null' ? 'hidden' : ''}`}>
                         {title}
                         </span>
-                        <div className="mt-8 text-base text-black max-md:max-w-full" dangerouslySetInnerHTML={createMarkup(wording)} />
+                        <div className="mt-8 text-base text-black max-md:max-w-full" dangerouslySetInnerHTML={createMarkup(banner_description)} />
                     </div>
                     </div>
                     <div className="flex flex-col ml-5 w-[54%] max-md:ml-0 max-md:w-full">
@@ -88,11 +88,14 @@ const MicePage = () => {
                 </div>
                     <div className="w-full max-md:mt-10 max-md:max-w-full">
                                 <div className="my-8 text-2xl font-semibold  text-blue-500 uppercase max-md:mt-10 max-md:max-w-full">
-                                    <h1>Project</h1>
+                                    {other_images.length > 0 ? (
+                                        <h1>Project</h1>
+                                    ) : ''}
                                 </div>
                                 <div className="flex justify-between gap-5 max-md:flex-col max-md:gap-0">
                                     <div className="flex max-md:flex-col justify-between gap-5 w-full">
-                                            {other_images.map((value,keys) => (
+                                        {other_images.length > 0 ? (
+                                            other_images.map((value,keys) => (
                                                 <div className={`relative rounded-lg overflow-hidden cursor-pointer ${hover_element === 'element-'+keys ? 'bg-black ' : ''} `} onMouseEnter={MouseHover} onTouchStart={MouseHover} key={keys}>
                                                 <picture >
                                                     <source srcSet={`${value.image}`} type="image/webp"/>
@@ -102,7 +105,8 @@ const MicePage = () => {
                                                     <div className="font-semibold text-base" dangerouslySetInnerHTML={createMarkup(value.title.replace('-', "<br>" ))} />
                                                 </div>
                                             </div>
-                                            ))}
+                                            ))
+                                        ) : '' }
                                     </div>
                                 </div>
                     </div>

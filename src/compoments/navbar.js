@@ -3,23 +3,24 @@ import { Link, useLocation } from "react-router-dom"
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
+    
     const [IconHamburger, setIconHamburger] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(false);
     const location = useLocation(); // once ready it returns the 'window.location' object
     const [url, setUrl] = useState(null);
-
+   
     const navbarLink = [{
         'name' : 'Recruitment Event',
-        'link' : 'recruitment'
+        'link' : '/service/recruitment-event'
       }, {
         'name' : 'Corporate Hiring Program',
-        'link' : 'corporate-hiring'
+        'link' : '/service/corporate-hiring'
       }, {
         'name' : 'MICE',
-        'link' : 'mice'
+        'link' : '/service/mice'
       }, {
         'name' : 'Digital Services',
-        'link' : 'digital-services'
+        'link' : '/service/digital-services'
       }, 
     ]
 
@@ -44,9 +45,11 @@ const Navbar = () => {
       setIconHamburger(false);
     }
 
+
+
     useEffect(() => {
-      setUrl(location.pathname);
-      window.addEventListener("scroll", function(e) {
+        setUrl(location.pathname);
+        window.addEventListener("scroll", function(e) {
         RemoveDropdown();
       });
     }, [location]);
@@ -85,7 +88,7 @@ const Navbar = () => {
                   {
                     navbarLink.map((value, key) => (
                       <li key={key}>
-                      <Link to={`/${value.link}`} className="block px-4 py-2 hover:bg-blue-500 hover:text-white" onClick={RemoveDropdown}>{value.name}</Link>
+                      <Link to={`${value.link}`} className="block px-4 py-2 hover:bg-blue-500 hover:text-white" reloadDocument onClick={RemoveDropdown}>{value.name}</Link>
                     </li>
                     ))
                   }
