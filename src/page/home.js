@@ -80,7 +80,7 @@ const HomePage = () => {
                 setTestimonial(ressponse.results.testimonial);
                 setWhyChooseUs(ressponse.results.why_choose_us);
                 setWhyChooseUsOtherImages(ressponse.results.why_choose_us_other_images);
-               
+                console.log(ressponse);
            } else {
             alert('Error Page');
            }
@@ -96,7 +96,8 @@ const HomePage = () => {
             const [videoClip, setVideoClip] = useState(0);
             
             const onClickVideo = (e) => {
-                setVideoClip(e.target.getAttribute('data-target-video'));
+                // setVideoClip();
+                window.open(e.target.getAttribute('data-target-video'), '_blank');
             }
     
             return (
@@ -127,12 +128,12 @@ customers are saying about us.</h2>
                                       </picture> 
                                        : <div className="h-52 bg-slate-200 rounded-xl"></div>}
           
-                                      <iframe width="auto" height="227px" allowFullScreen allow='autoplay' className={`w-full aspect-video rounded-2xl ${videoClip === `${keys}` ? '' : 'hidden'}`} src={`${videoClip === `${keys}` ?  `${value.video}?rel=0&amp;autoplay=1` : ''} `} title={value.title}> </iframe> 
+                                      {/* <iframe width="auto" height="227px" allowFullScreen allow='autoplay' className={`w-full aspect-video rounded-2xl ${videoClip === `${keys}` ? '' : 'hidden'}`} src={`${videoClip === `${keys}` ?  `${value.video}?rel=0&amp;autoplay=1` : ''} `} title={value.title}> </iframe>  */}
           
                                       <button className={`bg-blue-500 rounded-full w-12 h-12 absolute m-auto left-0 right-0 top-0 bottom-0 ${videoClip === `${keys}` ? 'hidden' : ''}`}>
                                             <picture>
                                                 <source srcSet='/images/icon/icon-play.png'  type="image/webp"/>
-                                                <img src="/images/icon/icon-play.png" alt="icon-play" className="mx-auto w-5 h-5" onClick={ onClickVideo } data-target-video={`${keys}`}/>
+                                                <img src="/images/icon/icon-play.png" alt="icon-play" className="mx-auto w-5 h-5" onClick={ onClickVideo } data-target-video={`${value.video}`}/>
                                             </picture>
                                       </button>
                                   </div>
@@ -373,7 +374,7 @@ customers are saying about us.</h2>
 
                 {why_choose_us.map((value,key) => (
                       <div className="flex gap-1 justify-between pr-20 mt-11 mr-2.5 max-md:flex-wrap max-md:pr-5 max-md:max-w-full animations-element" data-animation="fade-in-fwd" key={key}>
-                      <div className="hexagon-border ">
+                      <div className="hexagon-border flex justify-center place-content-center ">
                             <img src='/images/icon/hextagon-icon.png' alt='' className='absolute'/>
                             <picture>
                                 <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.image}`} type="image/webp"/>
@@ -501,7 +502,7 @@ customers are saying about us.</h2>
 
                                 <div className=" space-y-5">
                                     <h2 className="text-slate-700 xl:text-5xl lg:text-3 xl text-3xl font-bold xl:leading-[53px] lg:leading-[53px] leading-[39px]  tracking-normal portofolio-headline animations-element capitalize" data-animation="slide-top">
-                                    We are trusted <br/> by over 5000+ clients.
+                                    We are trusted <br/> by over 300+ clients.
                                     </h2>
                                 </div>
                           

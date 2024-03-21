@@ -19,8 +19,8 @@ const Navbar = () => {
         'name' : 'MICE',
         'link' : '/service/mice'
       }, {
-        'name' : 'Digital Services',
-        'link' : '/service/digital-services'
+        'name' : 'Brand Activation',
+        'link' : '/service/brand-activation'
       }, 
     ]
 
