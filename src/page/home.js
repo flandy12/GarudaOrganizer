@@ -80,7 +80,6 @@ const HomePage = () => {
                 setTestimonial(ressponse.results.testimonial);
                 setWhyChooseUs(ressponse.results.why_choose_us);
                 setWhyChooseUsOtherImages(ressponse.results.why_choose_us_other_images);
-                console.log(ressponse);
            } else {
             alert('Error Page');
            }

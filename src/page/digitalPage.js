@@ -29,7 +29,6 @@ const DigitalPage = () => {
                 setOtherImages(ressponse.results ? ressponse.results.other_images : '');
                 setImage(ressponse.results ? ressponse.results.image : '');
                 setTitle(ressponse.results ? ressponse.results.title : '');      
-                console.log(ressponse);        
             } else {
                 console.log(ressponse);
                 alert('error');
