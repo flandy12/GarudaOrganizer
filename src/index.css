@@ -15,3 +15,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.splide {
+  padding: 3rem 0 !important;
+}
+
+.splide__arrow--next {
+  padding: 10px 30px !important ;
+  background-color: rgba(94, 150, 255, 0.403) !important;
+  border-radius: 20px  !important;
+  -webkit-border-radius: 20px  !important;
+  -moz-border-radius: 20px  !important;
+  -ms-border-radius: 20px  !important;
+  -o-border-radius: 20px  !important;
+}
+
+.splide__arrow--prev {
+  padding: 10px 30px !important ;
+  background-color: rgba(94, 150, 255, 0.403) !important;
+  border-radius: 20px  !important;
+  -webkit-border-radius: 20px  !important;
+  -moz-border-radius: 20px  !important;
+  -ms-border-radius: 20px  !important;
+  -o-border-radius: 20px  !important;
+}

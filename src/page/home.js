@@ -1,10 +1,13 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 // Default theme
 import "@splidejs/react-splide/css";
 
 // or other themes
 import "@splidejs/react-splide/css/skyblue";
 import "@splidejs/react-splide/css/sea-green";
+
+// or only core styles
+import "@splidejs/react-splide/css/core";
 
 import CountUp from "react-countup";
 
@@ -670,31 +673,48 @@ const HomePage = () => {
                 </div>
 
                 <Splide
+                  hasTrack={false}
                   options={{
                     rewind: true,
                     autoplay: "playing",
                     type: "loop",
                     perPage: 1,
                     perMove: 1,
+                    arrows: "true",
+                    pagination: "true",
+                    arrowPath: "m15.5 0.932-4.3 4.38...",
                   }}
                   className="animations-element p-0"
                   data-animation="slide-top-client">
-                  {partner.map((value, key) => (
-                    <SplideSlide key={key} className="justify-center flex p-0">
-                      <picture>
-                        <source
-                          srcSet={`${process.env.REACT_APP_URL_IMG}${value.logo}`}
-                          type="image/webp"
-                        />
-                        <img
-                          decoding="async"
-                          className="w-full"
-                          src={`${process.env.REACT_APP_URL_IMG}${value.logo}`}
-                          alt="logo BUMN"
-                        />
-                      </picture>
-                    </SplideSlide>
-                  ))}
+                  <SplideTrack>
+                    {partner.map((value, key) => (
+                      <SplideSlide
+                        key={key}
+                        className="justify-center flex p-0">
+                        <picture>
+                          <source
+                            srcSet={`${process.env.REACT_APP_URL_IMG}${value.logo}`}
+                            type="image/webp"
+                          />
+                          <img
+                            decoding="async"
+                            className="w-full"
+                            src={`${process.env.REACT_APP_URL_IMG}${value.logo}`}
+                            alt="logo BUMN"
+                          />
+                        </picture>
+                      </SplideSlide>
+                    ))}
+                  </SplideTrack>
+
+                  <div className="splide__arrows">
+                    <button className="splide__arrow splide__arrow--prev">
+                    &larr;
+                    </button>
+                    <button className="splide__arrow splide__arrow--next">
+                    &rarr;
+                    </button>
+                  </div>
                 </Splide>
               </div>
             </div>

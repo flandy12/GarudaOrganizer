@@ -212,12 +212,11 @@
  .splide {
  	max-width: fit-content;
  }
-
- .splide__arrows {
- 	display: none;
+ .splide__arrow {
+	background-color: aliceblue;
+	height: 20px;
+	width: 30px;
  }
-
-
  .wrapper-image {
  	position: absolute;
  	top: -25px;

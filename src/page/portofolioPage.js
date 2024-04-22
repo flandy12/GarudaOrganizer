@@ -104,13 +104,13 @@ const PortofolioPage = () => {
                             <img className={`h-auto max-w-full rounded-lg cursor-pointer ${elementPortofolio === `element-text-${key+1}` ? 'opacity-50' : ''}  `} src={`${process.env.REACT_APP_URL_IMG}${value.image}`} alt={value.title} data-target={`element-text-${key+1}`} onMouseOver={ElementHover} onTouchStart={ElementHover} />
                         </picture>
 
-                        <div className={`my-4 space-y-4 text-white absolute bottom-10 left-5 right-5 z-0 ${elementPortofolio === `element-text-${key+1}` ? '' : 'hidden'}`} id={`element-text-${key+1}`}>
+                        <div className={` space-y-4 text-white absolute bottom-10 max-md:my-0 max-md:bottom-2 left-5 right-5 z-0  h-auto ${elementPortofolio === `element-text-${key+1}` ? '' : 'hidden'}`} id={`element-text-${key+1}`}>
                             <div className="font-semibold text-lg">
-                                <div dangerouslySetInnerHTML={createMarkup(value.title)} />  
+                                <div className="max-md:text-base" dangerouslySetInnerHTML={createMarkup(value.title)} />  
                             </div>
                            
                             <div className="text-white">
-                                 <div dangerouslySetInnerHTML={createMarkup(value.description)} />  
+                                 <div className="max-md:text-sm" dangerouslySetInnerHTML={createMarkup(value.description)} />  
                             </div>
                         </div>
                       
