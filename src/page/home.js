@@ -510,24 +510,16 @@ customers are saying about us.</h2>
                                         rewind: true,
                                         autoplay: 'playing',
                                         type    : 'loop',
-                                        perPage: 3,
-                                        breakpoints : {
-                                            1024:{
-                                                perPage: 3,
-                                            },
-                                            640:{
-                                                perPage: 2,
-                                            }
-                                        },
+                                        perPage: 1,
                                         perMove: 1
-                                    } } className="animations-element" data-animation="slide-top-client">
+                                    } } className="animations-element p-0" data-animation="slide-top-client">
                                 
                                     {partner.map((value, key) => (
-                                        <SplideSlide key={key} className="justify-center flex">
+                                        <SplideSlide key={key} className="justify-center flex p-0">
                                         
                                         <picture>
                                             <source srcSet={`${process.env.REACT_APP_URL_IMG}${value.logo}`} type="image/webp"/>
-                                            <img decoding="async" className="h-20" src={`${process.env.REACT_APP_URL_IMG}${value.logo}`} alt="logo BUMN" />
+                                            <img decoding="async" className="w-full" src={`${process.env.REACT_APP_URL_IMG}${value.logo}`} alt="logo BUMN" />
                                         </picture> 
 
                                         </SplideSlide>
