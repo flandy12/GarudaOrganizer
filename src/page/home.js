@@ -668,7 +668,7 @@ const HomePage = () => {
                   <h2
                     className="text-slate-700 xl:text-5xl lg:text-3 xl text-3xl font-bold xl:leading-[53px] lg:leading-[53px] leading-[39px]  tracking-normal portofolio-headline animations-element capitalize"
                     data-animation="slide-top">
-                    We are trusted <br /> by over 300+ clients.
+                    We are trusted <br /> by over 1000+ clients.
                   </h2>
                 </div>
 
@@ -709,10 +709,10 @@ const HomePage = () => {
 
                   <div className="splide__arrows">
                     <button className="splide__arrow splide__arrow--prev">
-                    &larr;
+                      &larr;
                     </button>
                     <button className="splide__arrow splide__arrow--next">
-                    &rarr;
+                      &rarr;
                     </button>
                   </div>
                 </Splide>
