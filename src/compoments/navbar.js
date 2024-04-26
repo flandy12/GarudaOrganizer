@@ -18,7 +18,7 @@ const Navbar = () => {
       link: "/service/corporate-hiring",
     },
     {
-      name: "MICE",
+      name: "MICE and Activation",
       link: "/service/mice",
     },
     {
