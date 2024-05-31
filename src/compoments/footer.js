@@ -42,7 +42,7 @@ const Footer = props => {
                 </p>
                 <div className="w-100  h-full my-3 space-y-3 flex flex-col">
                   {navbarLink.map((value, key) => (
-                    <Link to={`${value.link}`} reloadDocumen>
+                    <Link to={`${value.link}`} reloadDocument>
                       {value.name}
                     </Link>
                   ))}
