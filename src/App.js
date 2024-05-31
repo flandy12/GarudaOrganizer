@@ -34,22 +34,22 @@ function App() {
   };
 
   const RouteGrup = () => {
-    return process.env.REACT_APP_MAINTENANCE === "true" ? (
-      ip === "103.87.79.26" ? (
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/portofolio" element={<PortofolioPage />} />
-          <Route path="/service/:url" element={<LayoutPageServices />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route path="*" element={<MaintenancePage />} />
-        </Routes>
-      )
+    return process.env.REACT_APP_MAINTENANCE === "false" ? (
+      // ip === "103.87.79.26" ? (
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/portofolio" element={<PortofolioPage />} />
+        <Route path="/service/:url" element={<LayoutPageServices />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     ) : (
+      // ) : (
+      //   <Routes>
+      //     <Route path="*" element={<MaintenancePage />} />
+      //   </Routes>
+      // )
       <Routes>
         <Route path="*" element={<MaintenancePage />} />
       </Routes>
