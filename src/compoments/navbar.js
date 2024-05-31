@@ -2,30 +2,30 @@ import { Link, useLocation } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 
+const navbarLink = [
+  {
+    name: "Recruitment Event",
+    link: "/service/recruitment-event",
+  },
+  {
+    name: "Corporate Hiring Program",
+    link: "/service/corporate-hiring",
+  },
+  {
+    name: "MICE and Activation",
+    link: "/service/mice",
+  },
+  {
+    name: "Digital Services",
+    link: "/service/digital-services",
+  },
+];
+
 const Navbar = () => {
   const [IconHamburger, setIconHamburger] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(false);
   const location = useLocation(); // once ready it returns the 'window.location' object
   const [url, setUrl] = useState(null);
-
-  const navbarLink = [
-    {
-      name: "Recruitment Event",
-      link: "/service/recruitment-event",
-    },
-    {
-      name: "Corporate Hiring Program",
-      link: "/service/corporate-hiring",
-    },
-    {
-      name: "MICE and Activation",
-      link: "/service/mice",
-    },
-    {
-      name: "Digital Services",
-      link: "/service/digital-services",
-    },
-  ];
 
   const dropdownNavbar = e => {
     if (activeDropdown === true) {
@@ -207,4 +207,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export {navbarLink, Navbar};

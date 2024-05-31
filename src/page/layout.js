@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CallApi from "../api/Api";
-import Navbar from "../compoments/navbar";
+import {Navbar} from "../compoments/navbar";
 import Whatsapp from "../compoments/whatsapp";
 import Footer from "../compoments/footer";
 
